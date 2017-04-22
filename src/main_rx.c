@@ -31,7 +31,7 @@ static int mycallback(unsigned char *_header,
 //    // type-cast, de-reference, and increment frame counter
     unsigned int *counter = (unsigned int *) _userdata;
     (*counter)++;
-//    framesyncstats_print(&_stats);
+   //framesyncstats_print(&_stats);
 
     if (_header_valid) {
 //		printf("Packet %u contains (%s) with RSSI %5.5f\n", *counter, _payload, _stats.rssi);
@@ -40,8 +40,13 @@ static int mycallback(unsigned char *_header,
         unsigned char payload[PAYLOAD_LENGTH] = {0};
         snprintf((char *) payload, 7, "Packet");
         unsigned int num_bit_errors = count_bit_errors_array(payload, _payload, n);
-        printf("[%u]: (%s):  %3u / %3u\tRSSI=(%5.5f)\n", *counter, _payload, num_bit_errors, n * 8, _stats.rssi);
+        //printf("[%u]: (%s):  %3u / %3u\tRSSI=(%5.5f)\n", *counter, _payload, num_bit_errors, n * 8, _stats.rssi);
+        FILE * esref;
+        esref = fopen("3.out", "a+");
+        fprintf(esref, "PACKET %s\n", _payload);
+        fclose(esref);
     }
+    //flexframesync_print(fs);
     return 0;
 }
 
@@ -87,7 +92,7 @@ int main(int argc, char *argv[]) {
         fprintf(stderr, "Unable to open device: %s\n", bladerf_strerror(status));
         return 1;
     }
-    fprintf(stdout, "bladerf_open_with_devinfo: %s\n", bladerf_strerror(status));
+    //fprintf(stdout, "bladerf_open_with_devinfo: %s\n", bladerf_strerror(status));
 
 
     //    hostedx115-latest.rbf
@@ -96,7 +101,7 @@ int main(int argc, char *argv[]) {
         fprintf(stderr, "Unable to bladerf_load_fpga  device: %s\n", bladerf_strerror(status));
         return status;
     }
-    fprintf(stdout, "bladerf_load_fpga: %s\n", bladerf_strerror(status));
+    //fprintf(stdout, "bladerf_load_fpga: %s\n", bladerf_strerror(status));
 
     /* Set up RX module parameters */
     config_rx.module = BLADERF_MODULE_RX;
@@ -112,13 +117,13 @@ int main(int argc, char *argv[]) {
         fprintf(stderr, "Failed to configure RX module. Exiting.\n");
         goto out;
     }
-    fprintf(stdout, "configure_module: %s\n", bladerf_strerror(status));
+    //fprintf(stdout, "configure_module: %s\n", bladerf_strerror(status));
     status = configure_module(devrx, &config_rx);
     if (status != 0) {
         fprintf(stderr, "Failed to configure RX module. Exiting.\n");
         goto out;
     }
-    fprintf(stdout, "configure_module: %s\n", bladerf_strerror(status));
+    //fprintf(stdout, "configure_module: %s\n", bladerf_strerror(status));
 
     /* Initialize synch interface on RX and TX modules */
     status = init_sync_tx(devrx);
@@ -138,7 +143,7 @@ int main(int argc, char *argv[]) {
         fprintf(stderr, "Failed to calibrate RX module. Exiting.\n");
         goto out;
     }
-    fprintf(stdout, "calibrate: %s\n", bladerf_strerror(status));
+    //fprintf(stdout, "calibrate: %s\n", bladerf_strerror(status));
 
 
     fs = flexframesync_create(mycallback, (void *) &frame_counter);
@@ -146,16 +151,16 @@ int main(int argc, char *argv[]) {
         fprintf(stderr, "Failed to framesync64_create. Exiting.\n");
         goto out;
     }
-    flexframesync_print(fs);
+
 
     status = sync_rx(devrx, &process_samples);
-    if (status != 0) {
+    if (status != 0)      {
         fprintf(stderr, "Failed to sync_rx(). Exiting. %s\n", bladerf_strerror(status));
         goto out;
     }
 
     out:
     bladerf_close(devrx);
-    fprintf(stderr, "RX STATUS: %u,  %s\n", status, bladerf_strerror(status));
+    //fprintf(stderr, "RX STATUS: %u,  %s\n", status, bladerf_strerror(status));
     return status;
 }

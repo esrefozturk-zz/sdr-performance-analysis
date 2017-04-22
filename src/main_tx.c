@@ -14,29 +14,6 @@ unsigned int samples_len = SAMPLE_SET_SIZE;
 int16_t *tx_samples;
 struct bladerf *devtx;
 
-/* Usage:
- *   libbladeRF_example_boilerplate [serial #]
- *
- * If a serial number is supplied, the program will attempt to open the
- * device with the provided serial number.
- *
- * Otherwise, the first available device will be used.
- */
-
-
-// callback function
-int mycallback(unsigned char *_header,
-               int _header_valid,
-               unsigned char *_payload,
-               unsigned int _payload_len,
-               int _payload_valid,
-               framesyncstats_s _stats,
-               void *_userdata) {
-    printf("***** callback invoked!\n");
-    printf("  header (%s)\n", _header_valid ? "valid" : "INVALID");
-    printf("  payload (%s)\n", _payload_valid ? "valid" : "INVALID");
-    return 0;
-}
 
 
 int main(int argc, char *argv[]) {
@@ -64,15 +41,17 @@ int main(int argc, char *argv[]) {
     if (argc >= 2) {
         strncpy(dev_info.serial, argv[1], sizeof(dev_info.serial) - 1);
     }
+
     status = bladerf_open_with_devinfo(&devtx, &dev_info);
 
     if (status != 0) {
         fprintf(stderr, "Unable to open device: %s\n", bladerf_strerror(status));
         return 1;
     }
+
     fprintf(stdout, "Device Serial: %s\tbladerf_open_with_devinfo: %s\n", dev_info.serial, bladerf_strerror(status));
 
-//    hostedx115-latest.rbf
+    // hostedx115-latest.rbf
     bladerf_load_fpga(devtx, "./hostedx115-latest.rbf");
 
     /* Set up RX module parameters */
@@ -138,11 +117,11 @@ int main(int argc, char *argv[]) {
     for (i = 0; i < 8; i++)
         header[i] = i;
 
-    while (status == 0) {
+    while (status == 0 && cnt < 1000) {
         cnt++;
 
         memset(payload, 0x00, PAYLOAD_LENGTH);
-        sprintf((char *) payload, "Packet (%d)", cnt);
+        sprintf((char *) payload, "%d", cnt);
         memset(&payload[13], 0x00, PAYLOAD_LENGTH - 13);
 
 
@@ -157,7 +136,7 @@ int main(int argc, char *argv[]) {
             complex));
             lastpos = lastpos + buf_len;
         }
-        printf("number of samples %u %u\n", symbol_len, lastpos);
+        //printf("number of samples %u %u\n", symbol_len, lastpos);
         samples_len = symbol_len;
         tx_samples = convert_comlexfloat_to_sc16q11(y, symbol_len);
         if (tx_samples == NULL) {
