@@ -1,6 +1,9 @@
 #include "config.h"
 #include "utils.h"
+#include <sys/time.h>
 
+struct timeval t;
+FILE * f1;
 
 /* The RX and TX modules are configured independently for these parameters */
 void print_bytes(const void *object, size_t size) {
@@ -40,11 +43,10 @@ static int mycallback(unsigned char *_header,
         unsigned char payload[PAYLOAD_LENGTH] = {0};
         snprintf((char *) payload, 7, "Packet");
         unsigned int num_bit_errors = count_bit_errors_array(payload, _payload, n);
-        //printf("[%u]: (%s):  %3u / %3u\tRSSI=(%5.5f)\n", *counter, _payload, num_bit_errors, n * 8, _stats.rssi);
-        FILE * esref;
-        esref = fopen("3.out", "a+");
-        fprintf(esref, "PACKET %s\n", _payload);
-        fclose(esref);
+        //printf("[%u]: (%s):  %3u / %3u\tRSSI=(%5.5f)\n", *counter, _payload, num_bit_errors, n * 8, _stats.rssi)
+
+        gettimeofday(&t, NULL);
+        fprintf(f1, "%s %lu %lu\n", _payload,t.tv_sec, t.tv_usec);
     }
     //flexframesync_print(fs);
     return 0;
@@ -83,6 +85,9 @@ int main(int argc, char *argv[]) {
     unsigned int frame_counter = 0;
 
     bladerf_init_devinfo(&dev_info);
+
+    f1 = fopen(argv[2], "w");
+    setvbuf ( f1 , NULL , _IONBF , 0 );
 
     if (argc >= 2) {
         strncpy(dev_info.serial, argv[1], sizeof(dev_info.serial) - 1);

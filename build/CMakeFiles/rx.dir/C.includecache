@@ -63,6 +63,8 @@ config.h
 /opt/tools/bladerf-tun-interface/src/config.h
 utils.h
 /opt/tools/bladerf-tun-interface/src/utils.h
+sys/time.h
+-
 
 /opt/tools/bladerf-tun-interface/src/transceive.c
 transceive.h

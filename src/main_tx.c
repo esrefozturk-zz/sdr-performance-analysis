@@ -1,23 +1,24 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
-#include <unistd.h>    /* for getopt */
+#include <unistd.h>
 #include <libbladeRF.h>
 #include <math.h>
 #include "config.h"
 #include "transceive.h"
 #include "utils.h"
+#include <sys/time.h>
+
+struct timeval t;
 
 
-/* The RX and TX modules are configured independently for these parameters */
 unsigned int samples_len = SAMPLE_SET_SIZE;
 int16_t *tx_samples;
 struct bladerf *devtx;
 
 
-
 int main(int argc, char *argv[]) {
-    int status;
+    int status=0;
     struct module_config config_rx;
     struct module_config config_tx;
     struct bladerf_devinfo dev_info;
@@ -37,24 +38,12 @@ int main(int argc, char *argv[]) {
 
 
     bladerf_init_devinfo(&dev_info);
+    strncpy(dev_info.serial, argv[1], sizeof(dev_info.serial) - 1);
 
-    if (argc >= 2) {
-        strncpy(dev_info.serial, argv[1], sizeof(dev_info.serial) - 1);
-    }
 
-    status = bladerf_open_with_devinfo(&devtx, &dev_info);
-
-    if (status != 0) {
-        fprintf(stderr, "Unable to open device: %s\n", bladerf_strerror(status));
-        return 1;
-    }
-
-    fprintf(stdout, "Device Serial: %s\tbladerf_open_with_devinfo: %s\n", dev_info.serial, bladerf_strerror(status));
-
-    // hostedx115-latest.rbf
+    bladerf_open_with_devinfo(&devtx, &dev_info);
     bladerf_load_fpga(devtx, "./hostedx115-latest.rbf");
 
-    /* Set up RX module parameters */
     config_rx.module = BLADERF_MODULE_RX;
     config_tx.module = BLADERF_MODULE_TX;
     config_tx.frequency = config_rx.frequency = FREQUENCY_USED;
@@ -64,60 +53,30 @@ int main(int argc, char *argv[]) {
     config_tx.vga1 = config_rx.vga1 = 10;
     config_tx.vga2 = config_rx.vga2 = 0;
 
-    status = configure_module(devtx, &config_rx);
-    if (status != 0) {
-        fprintf(stderr, "Failed to configure RX module. Exiting.\n");
-        return status;
-    }
-    fprintf(stdout, "configure_module: %s\n", bladerf_strerror(status));
+    configure_module(devtx, &config_rx);
+    configure_module(devtx, &config_tx);
 
-    status = configure_module(devtx, &config_tx);
-    if (status != 0) {
-        fprintf(stderr, "Failed to configure RX module. Exiting.\n");
-        return status;
-    }
-    fprintf(stdout, "configure_module: %s\n", bladerf_strerror(status));
+    init_sync_rx(devtx);
+    init_sync_tx(devtx);
 
-
-    /* Initialize synch interface on RX and TX modules */
-    status = init_sync_rx(devtx);
-    if (status != 0) {
-        fprintf(stderr, "init_sync_tx. Exiting.\n");
-        return status;
-    }
-    fprintf(stdout, "init_sync_tx: %s\n", bladerf_strerror(status));
-
-    /* Initialize synch interface on RX and TX modules */
-    status = init_sync_tx(devtx);
-    if (status != 0) {
-        fprintf(stderr, "init_sync_tx. Exiting.\n");
-        return status;
-    }
-    fprintf(stdout, "init_sync_tx: %s\n", bladerf_strerror(status));
-
-
-    status = calibrate(devtx);
-    if (status != 0) {
-        fprintf(stderr, "Failed to calibrate RX module. Exiting.\n");
-        return status;
-    }
-    fprintf(stdout, "calibrate: %s\n", bladerf_strerror(status));
-
+    calibrate(devtx);
 
     flexframegenprops_init_default(&ffp);
-    //ffp.check = false;
+
     ffp.fec0 = LIQUID_FEC_NONE;
     ffp.fec1 = LIQUID_FEC_NONE;
     ffp.mod_scheme = LIQUID_MODEM_QAM4;
 
     flexframegen fg = flexframegen_create(&ffp);
-    flexframegen_print(fg);
 
-// INIT HEADER
+    FILE * f1 = fopen(argv[2], "w");
+    setvbuf ( f1 , NULL , _IONBF , 0 );
+
+
     for (i = 0; i < 8; i++)
         header[i] = i;
 
-    while (status == 0 && cnt < 1000) {
+    while (status == 0 && cnt < 10000) {
         cnt++;
 
         memset(payload, 0x00, PAYLOAD_LENGTH);
@@ -136,27 +95,22 @@ int main(int argc, char *argv[]) {
             complex));
             lastpos = lastpos + buf_len;
         }
-        //printf("number of samples %u %u\n", symbol_len, lastpos);
+
         samples_len = symbol_len;
         tx_samples = convert_comlexfloat_to_sc16q11(y, symbol_len);
-        if (tx_samples == NULL) {
-            fprintf(stdout, "malloc error: %s\n", bladerf_strerror(status));
-            return BLADERF_ERR_MEM;
-        }
 
         status = sync_tx(devtx, tx_samples, samples_len);
-        if (status != 0) {
-            fprintf(stderr, "Failed to sync_tx(). Exiting. %s\n", bladerf_strerror(status));
-            goto out;
-        }
-        fprintf(stdout, "Packet %d transmitted\n", cnt);
+        if (status) break;
+
+        gettimeofday(&t, NULL);
+
+        fprintf(f1, "%d %lu %lu\n", cnt,t.tv_sec, t.tv_usec);
         usleep(10000);
     }
+    fclose(f1);
 
 
-    out:
     bladerf_close(devtx);
     flexframegen_destroy(fg);
-    fprintf(stderr, "TX STATUS: %u,  %s\n", status, bladerf_strerror(status));
     return status;
 }
