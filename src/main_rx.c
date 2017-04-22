@@ -46,7 +46,7 @@ static int mycallback(unsigned char *_header,
         //printf("[%u]: (%s):  %3u / %3u\tRSSI=(%5.5f)\n", *counter, _payload, num_bit_errors, n * 8, _stats.rssi)
 
         gettimeofday(&t, NULL);
-        fprintf(f1, "%lu,%lu,%s\n", _payload,t.tv_sec, t.tv_usec);
+        fprintf(f1, "%lu,%lu,%s\n",t.tv_sec, t.tv_usec, _payload);
     }
     //flexframesync_print(fs);
     return 0;

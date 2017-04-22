@@ -53,10 +53,10 @@ int main(int argc, char *argv[]) {
     config_tx.vga1 = config_rx.vga1 = 10;
     config_tx.vga2 = config_rx.vga2 = 0;
 
-    configure_module(devtx, &config_rx);
+
     configure_module(devtx, &config_tx);
 
-    init_sync_rx(devtx);
+
     init_sync_tx(devtx);
 
     calibrate(devtx);

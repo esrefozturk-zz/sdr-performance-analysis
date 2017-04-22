@@ -1,0 +1,5 @@
+/opt/tools/bladerf-tun-interface/cmake-build-debug/CMakeFiles/try.dir
+/opt/tools/bladerf-tun-interface/cmake-build-debug/CMakeFiles/tx.dir
+/opt/tools/bladerf-tun-interface/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/opt/tools/bladerf-tun-interface/cmake-build-debug/CMakeFiles/edit_cache.dir
+/opt/tools/bladerf-tun-interface/cmake-build-debug/CMakeFiles/rx.dir
