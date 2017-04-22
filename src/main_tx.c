@@ -104,7 +104,7 @@ int main(int argc, char *argv[]) {
 
         gettimeofday(&t, NULL);
 
-        fprintf(f1, "%d %lu %lu\n", cnt,t.tv_sec, t.tv_usec);
+        fprintf(f1, "%lu,%lu,%d\n",t.tv_sec, t.tv_usec, cnt);
         usleep(10000);
     }
     fclose(f1);
