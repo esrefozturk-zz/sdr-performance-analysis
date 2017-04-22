@@ -76,7 +76,7 @@ int main(int argc, char *argv[]) {
     for (i = 0; i < 8; i++)
         header[i] = i;
 
-    while (status == 0 && cnt < 10000) {
+    while (status == 0 && cnt < 1000) {
         cnt++;
 
         memset(payload, 0x00, PAYLOAD_LENGTH);

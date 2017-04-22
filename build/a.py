@@ -1,13 +1,13 @@
-lst = [ '1.out', '2.out', '3.out' ]
-
-
+lst = [ '25', '50', '100', '200' ]
 
 
 for i in lst:
-    gelenler = 0
-    duzgunler = 0
+    incoming = 0
+    outgoing = 0
+    valid = 0
     total= 1000
-    for line in open(i, encoding = "ISO-8859-1").read().split('\n'):
+    for line in open(i+'.tran.csv', encoding = "ISO-8859-1").read().split('\n'):
+        line = line.strip().split()
         gelenler += 1
         try:
             int( line.split()[1] )

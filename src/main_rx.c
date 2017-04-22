@@ -117,11 +117,7 @@ int main(int argc, char *argv[]) {
     config_tx.rx_lna = config_rx.rx_lna = BLADERF_LNA_GAIN_MID;
     config_tx.vga1 = config_rx.vga1 = 30;
     config_tx.vga2 = config_rx.vga2 = 3;
-    status = configure_module(devrx, &config_tx);
-    if (status != 0) {
-        fprintf(stderr, "Failed to configure RX module. Exiting.\n");
-        goto out;
-    }
+
     //fprintf(stdout, "configure_module: %s\n", bladerf_strerror(status));
     status = configure_module(devrx, &config_rx);
     if (status != 0) {
@@ -130,11 +126,7 @@ int main(int argc, char *argv[]) {
     }
     //fprintf(stdout, "configure_module: %s\n", bladerf_strerror(status));
 
-    /* Initialize synch interface on RX and TX modules */
-    status = init_sync_tx(devrx);
-    if (status != 0) {
-        goto out;
-    }
+
 
     /* Initialize synch interface on RX and TX modules */
     status = init_sync_rx(devrx);
