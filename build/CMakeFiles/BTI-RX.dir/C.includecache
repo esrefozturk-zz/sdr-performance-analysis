@@ -1,0 +1,80 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../includes/config.h
+stdlib.h
+-
+string.h
+-
+stdio.h
+-
+libbladeRF.h
+-
+liquid/liquid.h
+-
+transceive.h
+../includes/transceive.h
+
+../includes/transceive.h
+stdlib.h
+-
+string.h
+-
+stdio.h
+-
+unistd.h
+-
+libbladeRF.h
+-
+config.h
+../includes/config.h
+
+../includes/utils.h
+math.h
+-
+complex.h
+-
+libbladeRF.h
+-
+liquid/liquid.h
+-
+
+/Users/eronur/Library/Mobile Documents/com~apple~CloudDocs/workspace/bladerf-tun-interface/src/config.c
+config.h
+/Users/eronur/Library/Mobile Documents/com~apple~CloudDocs/workspace/bladerf-tun-interface/src/config.h
+
+/Users/eronur/Library/Mobile Documents/com~apple~CloudDocs/workspace/bladerf-tun-interface/src/main_rx.c
+config.h
+/Users/eronur/Library/Mobile Documents/com~apple~CloudDocs/workspace/bladerf-tun-interface/src/config.h
+utils.h
+/Users/eronur/Library/Mobile Documents/com~apple~CloudDocs/workspace/bladerf-tun-interface/src/utils.h
+
+/Users/eronur/Library/Mobile Documents/com~apple~CloudDocs/workspace/bladerf-tun-interface/src/transceive.c
+transceive.h
+/Users/eronur/Library/Mobile Documents/com~apple~CloudDocs/workspace/bladerf-tun-interface/src/transceive.h
+
+/Users/eronur/Library/Mobile Documents/com~apple~CloudDocs/workspace/bladerf-tun-interface/src/utils.c
+utils.h
+/Users/eronur/Library/Mobile Documents/com~apple~CloudDocs/workspace/bladerf-tun-interface/src/utils.h
+
+/usr/local/include/libbladeRF.h
+stdint.h
+-
+stdlib.h
+-
+stdbool.h
+-
+windows.h
+-
+
+/usr/local/include/liquid/liquid.h
+inttypes.h
+-
+complex.h
+-
+

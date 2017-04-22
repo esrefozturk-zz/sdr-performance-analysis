@@ -1,0 +1,1 @@
+/usr/bin/cc     CMakeFiles/try.dir/src/tryframing.c.o CMakeFiles/try.dir/src/config.c.o CMakeFiles/try.dir/src/transceive.c.o CMakeFiles/try.dir/src/utils.c.o  -o try  -L/usr/local/lib  -L/opt/local/lib -rdynamic -lbladeRF -lm -lc -lliquid -Wl,-rpath,/usr/local/lib:/opt/local/lib 

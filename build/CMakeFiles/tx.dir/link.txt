@@ -1,0 +1,1 @@
+/usr/bin/cc     CMakeFiles/tx.dir/src/main_tx.c.o CMakeFiles/tx.dir/src/config.c.o CMakeFiles/tx.dir/src/transceive.c.o CMakeFiles/tx.dir/src/utils.c.o  -o tx  -L/usr/local/lib  -L/opt/local/lib -rdynamic -lbladeRF -lm -lc -lliquid -Wl,-rpath,/usr/local/lib:/opt/local/lib 

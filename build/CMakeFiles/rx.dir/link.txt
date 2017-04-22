@@ -1,0 +1,1 @@
+/usr/bin/cc     CMakeFiles/rx.dir/src/main_rx.c.o CMakeFiles/rx.dir/src/config.c.o CMakeFiles/rx.dir/src/transceive.c.o CMakeFiles/rx.dir/src/utils.c.o  -o rx  -L/usr/local/lib  -L/opt/local/lib -rdynamic -lbladeRF -lm -lc -lliquid -Wl,-rpath,/usr/local/lib:/opt/local/lib 
