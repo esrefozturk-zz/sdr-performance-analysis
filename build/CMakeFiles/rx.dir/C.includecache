@@ -44,6 +44,16 @@ libbladeRF.h
 liquid/liquid.h
 -
 
+/opt/local/include/libbladeRF.h
+stdint.h
+-
+stdlib.h
+-
+stdbool.h
+-
+windows.h
+-
+
 /opt/tools/bladerf-tun-interface/src/config.c
 config.h
 /opt/tools/bladerf-tun-interface/src/config.h
@@ -61,16 +71,6 @@ transceive.h
 /opt/tools/bladerf-tun-interface/src/utils.c
 utils.h
 /opt/tools/bladerf-tun-interface/src/utils.h
-
-/usr/local/include/libbladeRF.h
-stdint.h
--
-stdlib.h
--
-stdbool.h
--
-windows.h
--
 
 /usr/local/include/liquid/liquid.h
 inttypes.h

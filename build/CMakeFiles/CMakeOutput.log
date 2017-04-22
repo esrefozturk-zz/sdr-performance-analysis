@@ -541,7 +541,7 @@ make[1]: Entering directory '/users/eonur/Documents/bladerf-tun-interface/build/
 Building C object CMakeFiles/cmTC_b17b5.dir/testCCompiler.c.o
 /usr/bin/cc     -o CMakeFiles/cmTC_b17b5.dir/testCCompiler.c.o   -c /users/eonur/Documents/bladerf-tun-interface/build/CMakeFiles/CMakeTmp/testCCompiler.c
 Linking C executable cmTC_b17b5
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b17b5.dir/link.txt --verbose=1
+/opt/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_b17b5.dir/link.txt --verbose=1
 /usr/bin/cc       CMakeFiles/cmTC_b17b5.dir/testCCompiler.c.o  -o cmTC_b17b5 -rdynamic 
 make[1]: Leaving directory '/users/eonur/Documents/bladerf-tun-interface/build/CMakeFiles/CMakeTmp'
 
@@ -555,7 +555,7 @@ make[1]: Entering directory '/users/eonur/Documents/bladerf-tun-interface/build/
 Building C object CMakeFiles/cmTC_a9251.dir/CMakeCCompilerABI.c.o
 /usr/bin/cc     -o CMakeFiles/cmTC_a9251.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.5/Modules/CMakeCCompilerABI.c
 Linking C executable cmTC_a9251
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a9251.dir/link.txt --verbose=1
+/opt/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a9251.dir/link.txt --verbose=1
 /usr/bin/cc      -v CMakeFiles/cmTC_a9251.dir/CMakeCCompilerABI.c.o  -o cmTC_a9251 -rdynamic  
 Using built-in specs.
 COLLECT_GCC=/usr/bin/cc
@@ -581,7 +581,7 @@ Parsed C implicit link information from above output:
   ignore line: [Building C object CMakeFiles/cmTC_a9251.dir/CMakeCCompilerABI.c.o]
   ignore line: [/usr/bin/cc     -o CMakeFiles/cmTC_a9251.dir/CMakeCCompilerABI.c.o   -c /usr/share/cmake-3.5/Modules/CMakeCCompilerABI.c]
   ignore line: [Linking C executable cmTC_a9251]
-  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a9251.dir/link.txt --verbose=1]
+  ignore line: [/opt/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_a9251.dir/link.txt --verbose=1]
   ignore line: [/usr/bin/cc      -v CMakeFiles/cmTC_a9251.dir/CMakeCCompilerABI.c.o  -o cmTC_a9251 -rdynamic  ]
   ignore line: [Using built-in specs.]
   ignore line: [COLLECT_GCC=/usr/bin/cc]
@@ -668,7 +668,7 @@ make[1]: Entering directory '/users/eonur/Documents/bladerf-tun-interface/build/
 Building C object CMakeFiles/cmTC_4af0e.dir/feature_tests.c.o
 /usr/bin/cc    -std=c11 -o CMakeFiles/cmTC_4af0e.dir/feature_tests.c.o   -c /users/eonur/Documents/bladerf-tun-interface/build/CMakeFiles/feature_tests.c
 Linking C executable cmTC_4af0e
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4af0e.dir/link.txt --verbose=1
+/opt/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_4af0e.dir/link.txt --verbose=1
 /usr/bin/cc       CMakeFiles/cmTC_4af0e.dir/feature_tests.c.o  -o cmTC_4af0e -rdynamic 
 make[1]: Leaving directory '/users/eonur/Documents/bladerf-tun-interface/build/CMakeFiles/CMakeTmp'
 
@@ -688,7 +688,7 @@ make[1]: Entering directory '/users/eonur/Documents/bladerf-tun-interface/build/
 Building C object CMakeFiles/cmTC_22e6b.dir/feature_tests.c.o
 /usr/bin/cc    -std=c99 -o CMakeFiles/cmTC_22e6b.dir/feature_tests.c.o   -c /users/eonur/Documents/bladerf-tun-interface/build/CMakeFiles/feature_tests.c
 Linking C executable cmTC_22e6b
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_22e6b.dir/link.txt --verbose=1
+/opt/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_22e6b.dir/link.txt --verbose=1
 /usr/bin/cc       CMakeFiles/cmTC_22e6b.dir/feature_tests.c.o  -o cmTC_22e6b -rdynamic 
 make[1]: Leaving directory '/users/eonur/Documents/bladerf-tun-interface/build/CMakeFiles/CMakeTmp'
 
@@ -708,7 +708,7 @@ make[1]: Entering directory '/users/eonur/Documents/bladerf-tun-interface/build/
 Building C object CMakeFiles/cmTC_66a11.dir/feature_tests.c.o
 /usr/bin/cc    -std=c90 -o CMakeFiles/cmTC_66a11.dir/feature_tests.c.o   -c /users/eonur/Documents/bladerf-tun-interface/build/CMakeFiles/feature_tests.c
 Linking C executable cmTC_66a11
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_66a11.dir/link.txt --verbose=1
+/opt/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_66a11.dir/link.txt --verbose=1
 /usr/bin/cc       CMakeFiles/cmTC_66a11.dir/feature_tests.c.o  -o cmTC_66a11 -rdynamic 
 make[1]: Leaving directory '/users/eonur/Documents/bladerf-tun-interface/build/CMakeFiles/CMakeTmp'
 
@@ -726,7 +726,7 @@ make[1]: Entering directory '/users/eonur/Documents/bladerf-tun-interface/build/
 Building CXX object CMakeFiles/cmTC_6e3ea.dir/testCXXCompiler.cxx.o
 /usr/bin/c++      -o CMakeFiles/cmTC_6e3ea.dir/testCXXCompiler.cxx.o -c /users/eonur/Documents/bladerf-tun-interface/build/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
 Linking CXX executable cmTC_6e3ea
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6e3ea.dir/link.txt --verbose=1
+/opt/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6e3ea.dir/link.txt --verbose=1
 /usr/bin/c++        CMakeFiles/cmTC_6e3ea.dir/testCXXCompiler.cxx.o  -o cmTC_6e3ea -rdynamic 
 make[1]: Leaving directory '/users/eonur/Documents/bladerf-tun-interface/build/CMakeFiles/CMakeTmp'
 
@@ -740,7 +740,7 @@ make[1]: Entering directory '/users/eonur/Documents/bladerf-tun-interface/build/
 Building CXX object CMakeFiles/cmTC_d7322.dir/CMakeCXXCompilerABI.cpp.o
 /usr/bin/c++      -o CMakeFiles/cmTC_d7322.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.5/Modules/CMakeCXXCompilerABI.cpp
 Linking CXX executable cmTC_d7322
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d7322.dir/link.txt --verbose=1
+/opt/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d7322.dir/link.txt --verbose=1
 /usr/bin/c++       -v CMakeFiles/cmTC_d7322.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_d7322 -rdynamic  
 Using built-in specs.
 COLLECT_GCC=/usr/bin/c++
@@ -766,7 +766,7 @@ Parsed CXX implicit link information from above output:
   ignore line: [Building CXX object CMakeFiles/cmTC_d7322.dir/CMakeCXXCompilerABI.cpp.o]
   ignore line: [/usr/bin/c++      -o CMakeFiles/cmTC_d7322.dir/CMakeCXXCompilerABI.cpp.o -c /usr/share/cmake-3.5/Modules/CMakeCXXCompilerABI.cpp]
   ignore line: [Linking CXX executable cmTC_d7322]
-  ignore line: [/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d7322.dir/link.txt --verbose=1]
+  ignore line: [/opt/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d7322.dir/link.txt --verbose=1]
   ignore line: [/usr/bin/c++       -v CMakeFiles/cmTC_d7322.dir/CMakeCXXCompilerABI.cpp.o  -o cmTC_d7322 -rdynamic  ]
   ignore line: [Using built-in specs.]
   ignore line: [COLLECT_GCC=/usr/bin/c++]
@@ -851,7 +851,7 @@ make[1]: Entering directory '/users/eonur/Documents/bladerf-tun-interface/build/
 Building CXX object CMakeFiles/cmTC_2053b.dir/feature_tests.cxx.o
 /usr/bin/c++     -std=c++14 -o CMakeFiles/cmTC_2053b.dir/feature_tests.cxx.o -c /users/eonur/Documents/bladerf-tun-interface/build/CMakeFiles/feature_tests.cxx
 Linking CXX executable cmTC_2053b
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2053b.dir/link.txt --verbose=1
+/opt/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_2053b.dir/link.txt --verbose=1
 /usr/bin/c++        CMakeFiles/cmTC_2053b.dir/feature_tests.cxx.o  -o cmTC_2053b -rdynamic 
 make[1]: Leaving directory '/users/eonur/Documents/bladerf-tun-interface/build/CMakeFiles/CMakeTmp'
 
@@ -924,7 +924,7 @@ make[1]: Entering directory '/users/eonur/Documents/bladerf-tun-interface/build/
 Building CXX object CMakeFiles/cmTC_03351.dir/feature_tests.cxx.o
 /usr/bin/c++     -std=c++11 -o CMakeFiles/cmTC_03351.dir/feature_tests.cxx.o -c /users/eonur/Documents/bladerf-tun-interface/build/CMakeFiles/feature_tests.cxx
 Linking CXX executable cmTC_03351
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_03351.dir/link.txt --verbose=1
+/opt/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_03351.dir/link.txt --verbose=1
 /usr/bin/c++        CMakeFiles/cmTC_03351.dir/feature_tests.cxx.o  -o cmTC_03351 -rdynamic 
 make[1]: Leaving directory '/users/eonur/Documents/bladerf-tun-interface/build/CMakeFiles/CMakeTmp'
 
@@ -997,7 +997,7 @@ make[1]: Entering directory '/users/eonur/Documents/bladerf-tun-interface/build/
 Building CXX object CMakeFiles/cmTC_8c383.dir/feature_tests.cxx.o
 /usr/bin/c++     -std=c++98 -o CMakeFiles/cmTC_8c383.dir/feature_tests.cxx.o -c /users/eonur/Documents/bladerf-tun-interface/build/CMakeFiles/feature_tests.cxx
 Linking CXX executable cmTC_8c383
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8c383.dir/link.txt --verbose=1
+/opt/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8c383.dir/link.txt --verbose=1
 /usr/bin/c++        CMakeFiles/cmTC_8c383.dir/feature_tests.cxx.o  -o cmTC_8c383 -rdynamic 
 make[1]: Leaving directory '/users/eonur/Documents/bladerf-tun-interface/build/CMakeFiles/CMakeTmp'
 
