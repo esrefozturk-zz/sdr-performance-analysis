@@ -1,9 +1,12 @@
 lst = [ '25', '50', '100' ]
 
-f = open('results.csv', 'w')
+f = open('results-summary.csv', 'w')
 f.write('distance(cm),total,received,valid,duration\n')
 
 for i in lst:
+    g = open('results-' + i + '.csv', 'w')
+    g.write('packet,duration\n')
+
     d = {}
     incoming = 0
     valid = 0
@@ -25,7 +28,11 @@ for i in lst:
     total_duration = 0
     for j in d:
         if d[j].get('recv'):
-            total_duration += (d[j]['recv']-d[j]['tran'])
+            dur = (d[j]['recv']-d[j]['tran'])
+            total_duration += dur
+            g.write('{},{}\n'.format(j,dur/1000000))
     duration = total_duration/len(d)
+    g.close()
 
     f.write('{},{},{},{},{}\n'.format(i,total,incoming,valid,duration/1000000))
+f.close()
