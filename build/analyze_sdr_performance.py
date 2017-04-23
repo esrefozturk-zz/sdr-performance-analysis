@@ -31,7 +31,7 @@ for i in lst:
             dur = (d[j]['recv']-d[j]['tran'])
             total_duration += dur
             g.write('{},{}\n'.format(j,dur/1000000))
-    duration = total_duration/len(d)
+    duration = total_duration/incoming
     g.close()
 
     f.write('{},{},{},{},{}\n'.format(i,total,incoming,valid,duration/1000000))
