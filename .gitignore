@@ -4,3 +4,5 @@ build/cmake_install.cmake
 build/rx
 build/try
 build/tx
+cmake-build-debug/
+.idea
