@@ -1,19 +1,15 @@
-build klasorunde butun olay
+# Sdr Performance Analysis
 
-Su dosyalar yaptigimiz olcum sonuclari:
+## Results Summary:
 
-gonderme/alma saniyesi, gonderme/alma microsaniyesi, packet no 
+| Distance(cm) | Packets sent| Packets received  | Valid packets received | Average Duration  |
+| - | - | - | - | - |
+| 25 | 1000 | 865 | 860 | 0.8612 |
+| 50 | 1000 | 881 | 875 | 0.8561 |
+| 100 | 1000 | 860 | 742 |0.7664 |
 
-seklinde
+## Explanations:
 
-25.recv.csv
-25.tran.csv
-
-50.recv.csv
-50.tran.csv
-
-100.recv.csv
-100.tran.csv
-
-
-results.csv de de bunlarin ortalama degerleri falan var ama cok kotu durumda su anda sanirim.
+- Benchmark and analysis related files can be found at `analyze` folder.
+- Measurements and results can be found at the files with measurement distance names.
+- Summary of the results can also be found at `analyze` folder.
